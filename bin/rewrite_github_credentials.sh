@@ -1,18 +1,10 @@
 #!/bin/sh
 
 git filter-branch --env-filter '
-#OLD_EMAIL="your-old-email@example.com"
 CORRECT_NAME="Buggy Ding Dong"
 CORRECT_EMAIL="buggydingdong@pingpongkingkong.com"
-
-#if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
-#then
-    export GIT_COMMITTER_NAME="$CORRECT_NAME"
-    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
-#fi
-#if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
-#then
-    export GIT_AUTHOR_NAME="$CORRECT_NAME"
-    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
-#fi
+export GIT_COMMITTER_NAME="$CORRECT_NAME"
+export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+export GIT_AUTHOR_NAME="$CORRECT_NAME"
+export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
 ' --tag-name-filter cat -- --branches --tags
